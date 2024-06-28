@@ -3,7 +3,7 @@ version: 1.5.0
 ignition:
   config:
     merge:
-      - source: https://example.com/sample.ign
+      - source: https://github.com/ehsokd/FedoraOKD/edit/main/install.ign
 passwd:
   users:
     - name: core
