@@ -1,1 +1,30 @@
-test
+variant: fcos
+version: 1.3.0
+storage:
+  files:
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: fedora-coreos
+    - path: /etc/NetworkManager/system-connections/ethernet.nmconnection
+      mode: 0600
+      contents:
+        inline: |
+          [connection]
+          id=ethernet
+          type=ethernet
+          interface-name=eth0
+          [ipv4]
+          method=auto
+          [ipv6]
+          method=ignore
+systemd:
+  units:
+    - name: sshd.service
+      enabled: true
+passwd:
+  users:
+    - name: core
+      ssh_authorized_keys:
+        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDFGK9P4zR4JmxRcpY1J6Szo1wj0awEJLt/WXHqysBrAewBaAttun1vsCIZbX/JoWhcESsipgaMOd1zjs/5kN2YXc7s1B3TfR81v3V5dQQsQVkn3NCn+MijS5A41jIj7yZVwQvqMBlw/rtc0S6aqv0Tb/1VjsxVbz7dx+IKJ9Ngnxs5Wz3hCFn6UsM9I+viDMSwUB8w5nlMiiKpQKFD6IChmDjzDCR9FK1wzQkh0raAS5+ncOX2Cgqqn3rMT/bItElzu13rf/78dbLtG+f0X8q6vl/d3RohAhu4rbWg94TfodtrZgUhN5St19mB6x1zQqEyjAj7gXLQygX10SpvJWg+qciPTaKUh8f6XjP6s/abnzFFxNsEcz9awW47UK18XYapKE6SnkP9B6TCsnQDBn3cQ9ecoHKZLrCCg1cCUEFEvTReInHQSb2yeeDuu9CVI72OSJ4+JmQaMBvyzAsOalwpV/j7cYqR3LnD6Mm0Bc3jNTTS6ZuTXpbWB3WYN2S+WeSMcuoHs0rdiU/q2H7PLejIiihz1/2gBYPseRwuoQlLfIbxwW0Poc/MqaxD+9s3dhHE4ghD+W/BQHk+uecvGT8AWStiMIdKuT3VyQuloMsu/1hK2MG/KvDO+LekS5hpYcgcb+JmDEZXAaPBfzexdUfm9CIr7BnLVmTADZJqdZJigw== pangwen
+"
